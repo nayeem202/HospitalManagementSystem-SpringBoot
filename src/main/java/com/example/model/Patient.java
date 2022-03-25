@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long patientId;
 	private String patientName;
 	private String gender;
 	private String age;
@@ -31,12 +31,14 @@ public class Patient {
 	@JsonIgnore
 	MultipartFile file;
 
-	public long getId() {
-		return id;
+	
+	
+	public long getPatientId() {
+		return patientId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setPatientId(long patientId) {
+		this.patientId = patientId;
 	}
 
 	public String getPatientName() {

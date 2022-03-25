@@ -1,7 +1,9 @@
 package com.example.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +17,7 @@ import javax.persistence.Table;
 public class PatientFamilyMember {
 
 	@Id()
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, length = 20)
 	private long patientFamilyId;
 	private String familyMemberName;
@@ -24,8 +26,10 @@ public class PatientFamilyMember {
 	private String phone;
 	private String relation;
 
-	@OneToOne(optional = false)
+	@OneToOne(
+			cascade = { CascadeType.REMOVE})
 	@JoinColumn(name = "patientId", nullable = true)
+	
 	private Patient PatientModel;
 
 	public long getPatientFamilyId() {
